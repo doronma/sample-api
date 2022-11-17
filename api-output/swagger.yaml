@@ -1,0 +1,60 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Person API",
+    "description" : "API for persons",
+    "version" : "1.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/MARCUSDORON/PersonAPI/1.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  } ],
+  "tags" : [ {
+    "name" : "Main"
+  } ],
+  "paths" : {
+    "/persons" : {
+      "get" : {
+        "tags" : [ "persons" ],
+        "summary" : "get persons",
+        "description" : "Get a list of persons\n",
+        "operationId" : "getpersons",
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Person"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Person" : {
+        "required" : [ "firstName", "lastName" ],
+        "type" : "object",
+        "properties" : {
+          "age" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "firstName" : {
+            "type" : "string"
+          },
+          "lastName" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
