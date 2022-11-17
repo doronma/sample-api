@@ -1,7 +1,8 @@
 openapi: 3.0.0
 info:
   title: Physics QA API
-  description: "Lambda exposed Physics QA Application API\nThis is version 2   "
+  description: "Lambda exposed Physics QA Application API\nThis is version 2 - look\
+    \ out "
   contact:
     name: Doron Marcus
     email: doron.marcus@onmail.com
