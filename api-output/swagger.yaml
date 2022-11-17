@@ -3,6 +3,11 @@
   "info" : {
     "title" : "Person API",
     "description" : "API for persons",
+    "contact" : {
+      "name" : "API Support",
+      "url" : "http://www.example.com/support",
+      "email" : "support@example.com"
+    },
     "version" : "1.0"
   },
   "servers" : [ {
@@ -10,7 +15,7 @@
     "description" : "SwaggerHub API Auto Mocking"
   } ],
   "tags" : [ {
-    "name" : "Main"
+    "name" : "persons"
   } ],
   "paths" : {
     "/persons" : {
@@ -19,6 +24,40 @@
         "summary" : "get persons",
         "description" : "Get a list of persons\n",
         "operationId" : "getpersons",
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Persons"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/persons/{name}/" : {
+      "get" : {
+        "tags" : [ "persons" ],
+        "summary" : "get specific person",
+        "description" : "Get specific person\n",
+        "operationId" : "getperson",
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "path",
+          "description" : "person name",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
         "responses" : {
           "200" : {
             "description" : "search results matching criteria",
@@ -39,6 +78,12 @@
   },
   "components" : {
     "schemas" : {
+      "Persons" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Person"
+        }
+      },
       "Person" : {
         "required" : [ "firstName", "lastName" ],
         "type" : "object",
